@@ -178,10 +178,10 @@ p.copyright {
 }
 
 footer {
-    background-color: rgb(133, 13, 13); 
-    top: 20px;
-    bottom: 0;
+    background-color: rgb(133, 13, 13);
     height: 40px;
-    position: relative;
-    align-items: justify;
+    position: fixed;
+    bottom: 0;
+    width: 99%;
+    align-items: center;
 }
