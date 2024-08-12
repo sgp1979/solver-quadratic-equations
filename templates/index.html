@@ -12,7 +12,7 @@
             <div class="line"></div>
             <div class="line"></div>
         </div>
-        <div class="logo"><a href="index.html"><img src="Logo.jpg" width="40" alt="Logo"></a></div>
+        <div class="logo"><a href="index.html"><img src="{{url_for('static', path='/Logo.jpg')}}" width="40" alt="Logo"></a></div>
         <div class="brand">SGP1979</div>
         <div class="header-home"><a href="https://sgp1979.github.io/website/">Home</a></div>
     </header><!--end of Header-->
@@ -64,7 +64,8 @@
 
     <footer>
         <p class="copyright">&copy; SGP1979 &nbsp;&nbsp; info@sgp1979.com &nbsp;&nbsp;
-        <a target="_blank" href="https://github.com/sgp1979";><img src="GitHub-Mark-ea2971cee799.png" width="18" alt="GitHub"></a></p>
+        <a target="_blank" href="https://github.com/sgp1979";>
+            <img src="{{url_for('static', path='/GitHub-Mark-ea2971cee799.png')}}" width="18" alt="GitHub"></a></p>
     </footer>
 
     </body>
