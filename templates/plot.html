@@ -3,7 +3,46 @@
         <title>Solution</title>
         <link rel="stylesheet" href="{{ url_for('static', path='/style.css') }}">
     </head>
+    
     <body>
+
+    <!--Header-->
+    <header>
+        <div class="menu-toggle" onclick="toggleSidebar()">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+        <div class="logo"><a href="https://sgp1979.github.io/website/">
+            <img src="{{url_for('static', path='/Logo.jpg')}}" width="40" alt="Logo"></a></div>
+        <div class="brand">SGP1979</div>
+        <div class="header-home"><a href="https://sgp1979.github.io/website/">Home</a></div>
+    </header><!--end of Header-->
+
+    <!--Sidebar Contents-->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-title">Contents</div>
+    
+        <nav>
+            <ul>
+                <li><a href="https://sgp1979.github.io/website/">Home</a></li>
+            </ul>
+        </nav>  
+    
+        <!--JavaScript to toggle the sidebar-->
+        <script>
+            function toggleSidebar(){
+                var sidebar = document.getElementById("sidebar");
+                var content = document.querySelector("main");
+                sidebar.classList.toggle("hide-sidebar");
+                content.classList.toggle("hide-main");
+            }
+        </script>
+    </div><!--end of Sidebar Contents-->
+    
+    <!--Main-->
+    <main>
+        
         <h3 style="color:black"> Coefficients entered: </h3>
         <ul>
             <li>a = {{a}}</li>
@@ -23,6 +62,14 @@
 
         <img src="data:image/png;base64, {{picture}}" alt="plot">
 
+    </main><!--end of Main-->
+
+    <footer>
+        <p class="copyright">&copy; SGP1979 &nbsp;&nbsp; info@sgp1979.com &nbsp;&nbsp;
+        <a target="_blank" href="https://github.com/sgp1979";>
+            <img src="{{url_for('static', path='/GitHub.png')}}" width="18" alt="GitHub"></a></p>
+    </footer>
+        
     </body>
 </html>
 
