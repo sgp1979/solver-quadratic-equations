@@ -185,6 +185,7 @@ footer.fixed {
     width: 99%;
     align-items: center;
     padding-bottom: 30px;
+    padding-top: 0px;
 }
 
 footer.relative {
