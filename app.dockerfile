@@ -1,6 +1,6 @@
 # Created by Google Gemini 2025-04-23
 # EXPOSE and CMD lines edited by ChatGPT 2025-04-23
-# Should help to deploy the app through Google Cloud
+# Helps to deploy the app through Google Cloud Run
 
 # Use an official Python runtime as a parent image
 FROM python:3.11-slim-buster
