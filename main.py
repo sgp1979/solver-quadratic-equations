@@ -23,6 +23,10 @@ templates = Jinja2Templates(directory="templates")
 async def root():
     return RedirectResponse(url='/main')
 
+port = int(os.environ.get("PORT", 8080))
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=port)
 
 @app.get("/main")
 async def main(request: Request, message=
