@@ -13,6 +13,7 @@ COPY requirements.txt .
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
+RUN ls -l /app/static
 
 # Copy the application source code
 COPY . .
