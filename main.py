@@ -1,4 +1,3 @@
-import uvicorn
 from fastapi import FastAPI, Request, Form, Query
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
@@ -16,6 +15,12 @@ import matplotlib.pyplot as plt
 
 app = FastAPI()
 
+if __name__ == "__main__":
+    import uvicorn
+    import os
+    port = int(os.environ.get("PORT", 8080))  # default to 8080
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
+
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 templates = Jinja2Templates(directory="templates")
@@ -23,11 +28,6 @@ templates = Jinja2Templates(directory="templates")
 @app.get("/")
 async def root():
     return RedirectResponse(url='/main')
-
-port = int(os.environ.get("PORT", 8080))
-
-if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=port)
 
 @app.get("/main")
 async def main(request: Request, message=
