@@ -18,7 +18,7 @@ app = FastAPI()
 if __name__ == "__main__":
     import uvicorn
     import os
-    port = int(os.environ.get("PORT", 8080))  # default to 8080
+    port = int(os.environ.get("PORT", 8080))
     uvicorn.run("main:app", host="0.0.0.0", port=port)
 
 # app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -127,7 +127,7 @@ async def plot(request: Request,
             
         plt.plot(p, q, marker='o', color='purple', label='min|max')
         plt.text(p, q+0.5, 
-                str(round(p,2)),
+                str(np.round(p,2)),
                 color='purple', fontsize=10,
                 ha='center', va='bottom')
 
@@ -139,13 +139,13 @@ async def plot(request: Request,
     
         plt.plot(roots[0], 0, marker="o", color='red', label='root')
         plt.text(roots[0], 0.5,
-                    str(round(roots[0],2)), 
+                    str(np.round(roots[0],2)), 
                     color='red', fontsize='10',
                     ha='center', va='bottom')
             
         plt.plot(roots[1], 0, marker='o', color='red')
         plt.text(roots[1], 0.5, 
-                    str(round(roots[1],2)), 
+                    str(np.round(roots[1],2)), 
                     color='red', fontsize='10',
                     ha='center', va='bottom')
         plt.legend()
@@ -159,7 +159,7 @@ async def plot(request: Request,
             
         plt.plot(p, 0, marker='o', color='purple', label='min|max')
         plt.text(p, 0.5, 
-                str(round(p,2)),
+                str(np.round(p,2)),
                 color='purple', fontsize=10,
                 ha='center', va='bottom')
 
@@ -171,7 +171,7 @@ async def plot(request: Request,
 
         plt.plot(roots[0], 0, marker="o", color='red', label='root')
         plt.text(roots[0], 0.5, 
-                    str(round(roots[0],2)), 
+                    str(np.round(roots[0],2)), 
                     color='red', fontsize='10',
                     ha='center', va='bottom')
         plt.legend()
@@ -186,7 +186,7 @@ async def plot(request: Request,
 
         plt.plot(p1, q1, marker='o', color='purple', label='min|max')
         plt.text(p1, q1+0.5, 
-                str(round(p1,2)),
+                str(np.round(p1,2)),
                 color='purple', fontsize=10,
                 ha='center', va='bottom')
         
