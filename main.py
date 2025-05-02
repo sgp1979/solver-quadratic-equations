@@ -15,15 +15,8 @@ import matplotlib.pyplot as plt
 
 app = FastAPI()
 
-if __name__ == "__main__":
-    import uvicorn
-    import os
-    port = int(os.environ.get("PORT", 8080))
-    uvicorn.run("main:app", host="0.0.0.0", port=port)
-
 # app.mount("/static", StaticFiles(directory="static"), name="static")
 app.mount("/static", StaticFiles(directory=os.path.join(os.path.dirname(__file__), "static")), name="static")
-
 
 templates = Jinja2Templates(directory="templates")
 
@@ -73,11 +66,16 @@ async def plot(request: Request,
                     coeff_b: str = Form(...),
                     coeff_c: str = Form(...)):
     
-    a = float(coeff_a)
-    b = float(coeff_b)
-    c = float(coeff_c)
-    coefficients = [a, b, c]
-
+    try:
+        a = float(coeff_a)
+        b = float(coeff_b)
+        c = float(coeff_c)
+        coefficients = [a, b, c]
+    except Exception as e:
+        feedback = 'Wrong input'
+       return templates.TemplateResponse("index.html", 
+                                  {"request": request,
+                                   "message": message})
     D = b**2 - 4*a*c
 
     roots = []
@@ -87,7 +85,7 @@ async def plot(request: Request,
     plt.xlabel('independent variable X')
     plt.ylabel('dependent variable Y')
     plt.title('Solution Plot', loc='center')
-
+                        
     if a == 0 and b == 0 and c == 0:
         feedback = 'Any number is a solution.'
         
@@ -209,6 +207,12 @@ async def plot(request: Request,
                                        "roots": roots,
                                        "feedback": feedback,
                                        "picture": pngImageB64String})
+
+if __name__ == "__main__":
+    import uvicorn
+    import os
+    port = int(os.environ.get("PORT", 8080))
+    uvicorn.run("main:app", host="0.0.0.0", port=port)
 
 """
 # Note: 
