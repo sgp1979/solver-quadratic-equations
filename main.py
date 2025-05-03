@@ -35,7 +35,17 @@ async def main(request: Request, message=
 async def solve(a: int = Query(...),
                 b: int = Query(...),
                 c: int = Query(...)):
-    
+
+    try:
+        a = float(coeff_a)
+        b = float(coeff_b)
+        c = float(coeff_c)
+        coefficients = [a, b, c]
+    except Exception as e:
+        feedback = 'Wrong input'
+        return templates.TemplateResponse("index.html", 
+                                  {"message": feedback})
+                    
     D = b**2 - 4*a*c
 
     roots = []
