@@ -3,5 +3,6 @@
 - Enter coefficients in the form and press "Solve and Plot" to see results
 
 # API HTTP requests usage example:
-Request:   https://solver.sgp1979.com/solve?a=2&b=15&c=7
-Response:  {"roots":[-7,-0.5]}
+- Request:   https://solver.sgp1979.com/solve?a=2&b=15&c=7
+- Response:  {"roots":[-7,-0.5]}
+- Note: uses endpoint /solve
