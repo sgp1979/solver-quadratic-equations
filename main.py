@@ -71,12 +71,7 @@ async def plot(request: Request,
         b = float(coeff_b)
         c = float(coeff_c)
         coefficients = [a, b, c]
-    except Exception:
-        feedback = 'Wrong input'
-        return templates.TemplateResponse("index.html", 
-                                          {"request": request,
-                                          "message": feedback})
-    try:
+    
         D = b**2 - 4*a*c
     
         roots = []
@@ -210,7 +205,7 @@ async def plot(request: Request,
                                            "picture": pngImageB64String})
 
     except Exception:
-        feedback = 'Wrong input'
+        feedback = 'WRONG INPUT. TRY AGAIN!'
         return templates.TemplateResponse("index.html", 
                                           {"request": request,
                                           "message": feedback})
