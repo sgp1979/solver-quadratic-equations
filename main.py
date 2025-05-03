@@ -73,7 +73,7 @@ async def plot(request: Request,
         coefficients = [a, b, c]
     except Exception as e:
         feedback = 'Wrong input'
-       return templates.TemplateResponse("index.html", 
+        return templates.TemplateResponse("index.html", 
                                   {"message": feedback})
     D = b**2 - 4*a*c
 
