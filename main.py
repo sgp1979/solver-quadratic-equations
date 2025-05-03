@@ -81,9 +81,9 @@ async def plot(request: Request,
     
     try:
         try: 
-            a = float(a)
-            b = float(b)
-            c = float(c)
+            a = float(coeff_a)
+            b = float(coeff_b)
+            c = float(coeff_c)
             coefficients = [a, b, c] 
         except Exception:
             feedback = 'WRONG INPUT. TRY AGAIN!'
