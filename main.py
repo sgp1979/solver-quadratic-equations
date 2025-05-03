@@ -150,7 +150,7 @@ async def plot(request: Request,
             plt.legend()
         
         elif D == 0:
-            roots.append( np.round( (- b) / (2 * a), 4) )
+            roots.append(float( (- b) / (2 * a), 4))
         
             p = -b/(2*a)
             x = np.linspace(int(p)-5, int(p)+5, 100)
