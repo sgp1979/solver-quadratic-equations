@@ -107,7 +107,7 @@ async def plot(request: Request,
                      ha='center', va='bottom')
             
         elif a == 0 and b != 0:
-            roots.append(-c/b)
+            roots.append(np.round(-c/b, 4))
             
             plt.axvline(roots[0], color='blue', linestyle='-')
             plt.axhline(0, color='black', linestyle='-')
@@ -115,12 +115,12 @@ async def plot(request: Request,
             plt.legend()
     
         elif D > 0:
-            roots.append((- b - np.sqrt(D)) / (2 * a))
-            roots.append((- b + np.sqrt(D)) / (2 * a))
+            roots.append( np.round( (- b - np.sqrt(D)) / (2 * a), 4) )
+            roots.append( np.round( (- b + np.sqrt(D)) / (2 * a), 4) )
             roots.sort()
     
-            p = -b/(2*a)
-            q = -D/(4*a)
+            p = np.round( -b/(2*a), 4)
+            q = np.round( -D/(4*a), 4)
             x = np.linspace(min(roots)-5, max(roots)+5, 100)
             y = a*x**2 + b*x + c
                 
@@ -150,7 +150,7 @@ async def plot(request: Request,
             plt.legend()
         
         elif D == 0:
-            roots.append((- b) / (2 * a))
+            roots.append( np.round( (- b) / (2 * a), 4) )
         
             p = -b/(2*a)
             x = np.linspace(int(p)-5, int(p)+5, 100)
@@ -219,7 +219,7 @@ if __name__ == "__main__":
     import uvicorn
     import os
     port = int(os.environ.get("PORT", 8080))
-    uvicorn.run("main:app", host="0.0.0.0", port=port)
+    uvicorn.run("main:app", port=port)
 
 """
 # Note: 
