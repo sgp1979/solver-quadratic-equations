@@ -115,8 +115,8 @@ async def plot(request: Request,
             plt.legend()
     
         elif D > 0:
-            roots.append( np.round( (- b - np.sqrt(D)) / (2 * a), 4) )
-            roots.append( np.round( (- b + np.sqrt(D)) / (2 * a), 4) )
+            roots.append(np.round((- b - np.sqrt(D)) / (2 * a), 4))
+            roots.append(np.round((- b + np.sqrt(D)) / (2 * a), 4))
             roots.sort()
     
             p = np.round( -b/(2*a), 4)
