@@ -32,33 +32,46 @@ async def main(request: Request, message=
                                        "message": message})
 
 @app.get("/solve")
-async def solve(a: int = Query(...),
-                b: int = Query(...),
-                c: int = Query(...)):
-                    
-    D = b**2 - 4*a*c
+async def solve(a: str = Query(...),
+                b: str = Query(...),
+                c: str = Query(...)):
 
-    roots = []
-    feedback = ''
+    try:
+        roots = []
+        feedback = ''
 
-    if a == 0 and b == 0 and c == 0:
-        feedback = 'Any number is a solution.'
-    elif a == 0 and b == 0 and c != 0:
-        feedback = 'There is no solution.'
-    elif a == 0 and b != 0:
-        roots.append(-c/b)
-    elif D > 0:
-        roots.append((- b - np.sqrt(D)) / (2 * a))
-        roots.append((- b + np.sqrt(D)) / (2 * a))
-        roots.sort()    
-    elif D == 0:
-        roots.append((- b) / (2 * a))
-    else:
-        feedback = 'No real roots. Roots are complex numbers.'
-
-    return JSONResponse(content={"roots": roots, 
-                                 "feedback": feedback} 
-                                 if feedback else {"roots": roots})
+        try: 
+            a = int(a)
+            b = int(b)
+            c = int(c)
+            coefficients = [a, b, c] 
+        except Exception
+            feedback = 'Wrong input.'
+   
+        D = b**2 - 4*a*c
+    
+        if a == 0 and b == 0 and c == 0:
+            feedback = 'Any number is a solution.'
+        elif a == 0 and b == 0 and c != 0:
+            feedback = 'There is no solution.'
+        elif a == 0 and b != 0:
+            roots.append(-c/b)
+        elif D > 0:
+            roots.append((- b - np.sqrt(D)) / (2 * a))
+            roots.append((- b + np.sqrt(D)) / (2 * a))
+            roots.sort()    
+        elif D == 0:
+            roots.append((- b) / (2 * a))
+        else:
+            feedback = 'No real roots. Roots are complex numbers.'
+    
+        return JSONResponse(content={"roots": roots, 
+                                     "feedback": feedback} 
+                                     if feedback else {"roots": roots})
+    except Exception:
+        return JSONResponse(content={"roots": roots, 
+                                     "feedback": feedback} 
+                                     if feedback else {"roots": roots})
 
 @app.post("/plot")
 async def plot(request: Request, 
