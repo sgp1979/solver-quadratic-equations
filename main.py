@@ -74,8 +74,7 @@ async def plot(request: Request,
     except Exception as e:
         feedback = 'Wrong input'
        return templates.TemplateResponse("index.html", 
-                                  {"request": request,
-                                   "message": message})
+                                  {"message": feedback})
     D = b**2 - 4*a*c
 
     roots = []
