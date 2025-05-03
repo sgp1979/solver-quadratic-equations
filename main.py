@@ -107,7 +107,7 @@ async def plot(request: Request,
                      ha='center', va='bottom')
             
         elif a == 0 and b != 0:
-            roots.append(np.round(-c/b, 4))
+            roots.append(float(-c/b))
             
             plt.axvline(roots[0], color='blue', linestyle='-')
             plt.axhline(0, color='black', linestyle='-')
@@ -115,8 +115,8 @@ async def plot(request: Request,
             plt.legend()
     
         elif D > 0:
-            roots.append(np.round((- b - np.sqrt(D)) / (2 * a), 4))
-            roots.append(np.round((- b + np.sqrt(D)) / (2 * a), 4))
+            roots.append(float((- b - np.sqrt(D)) / (2 * a)))
+            roots.append(float((- b + np.sqrt(D)) / (2 * a)))
             roots.sort()
     
             p = np.round( -b/(2*a), 4)
